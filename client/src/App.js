@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [coords, setCoords] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -10,12 +13,20 @@ function App() {
       body: formData,
     });
     const coords = await result.json();
-    console.log(coords);
+    setCoords(coords);
   };
   return (
     <div className="App">
       <header className="App-header">Scanifly</header>
       <section>
+        {coords && (
+          <div>
+            <p>
+              Coordinates to map:
+              {coords.join(",")}
+            </p>
+          </div>
+        )}
         <form onSubmit={handleSubmit}>
           <div>
             File: <input type="file" name="img_upload" />
