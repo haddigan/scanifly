@@ -1,20 +1,16 @@
-import { useState } from "react";
+import { useCoordsApi } from "./hooks/useCoordsApi";
 import "./App.css";
 
 function App() {
-  const [coords, setCoords] = useState(null);
+  const [coords, requestCoords] = useCoordsApi();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("img_upload", e.target.img_upload.files[0]);
-    const result = await fetch("/api/upload", {
-      method: "post",
-      body: formData,
-    });
-    const coords = await result.json();
-    setCoords(coords);
+    requestCoords(formData);
   };
+
   return (
     <div className="App">
       <header className="App-header">Scanifly</header>
