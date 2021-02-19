@@ -14,7 +14,9 @@
   "dependencies": {
     "exif-parser": "^0.1.12",
     "express": "^4.17.1",
-    "formidable": "^1.2.2"
+    "express-async-errors": "^3.1.1",
+    "formidable": "^1.2.2",
+    "fs-extra": "^9.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
