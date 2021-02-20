@@ -1,8 +1,9 @@
 import { useCoordsApi } from "./hooks/useCoordsApi";
 import { PageLayout } from "./components/PageLayout";
-import "./App.css";
 import { Header } from "./components/Header";
 import { Map } from "./components/Map";
+import { ImagePlotter } from "./components/ImagePlotter";
+import "./App.css";
 
 function App() {
   const [coords, requestCoords] = useCoordsApi();
@@ -18,25 +19,8 @@ function App() {
     <div className="App">
       <Header />
       <PageLayout>
-        <>
-          {coords && (
-            <div>
-              <p>
-                Coordinates to map:
-                {coords.join(",")}
-              </p>
-            </div>
-          )}
-          <form onSubmit={handleSubmit}>
-            <div>
-              File: <input type="file" name="img_upload" />
-            </div>
-            <input type="submit" value="Upload" />
-          </form>
-        </>
-        <>
-          <Map />
-        </>
+        <ImagePlotter onUploadImage={handleSubmit} coords={coords} />
+        <Map coords={coords} />
       </PageLayout>
     </div>
   );
