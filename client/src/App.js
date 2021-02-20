@@ -1,5 +1,7 @@
 import { useCoordsApi } from "./hooks/useCoordsApi";
+import { PageLayout } from "./components/PageLayout";
 import "./App.css";
+import { Header } from "./components/Header";
 
 function App() {
   const [coords, requestCoords] = useCoordsApi();
@@ -13,23 +15,28 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">Scanifly</header>
-      <section>
-        {coords && (
-          <div>
-            <p>
-              Coordinates to map:
-              {coords.join(",")}
-            </p>
-          </div>
-        )}
-        <form onSubmit={handleSubmit}>
-          <div>
-            File: <input type="file" name="img_upload" />
-          </div>
-          <input type="submit" value="Upload" />
-        </form>
-      </section>
+      <Header />
+      <PageLayout>
+        <>
+          {coords && (
+            <div>
+              <p>
+                Coordinates to map:
+                {coords.join(",")}
+              </p>
+            </div>
+          )}
+          <form onSubmit={handleSubmit}>
+            <div>
+              File: <input type="file" name="img_upload" />
+            </div>
+            <input type="submit" value="Upload" />
+          </form>
+        </>
+        <>
+          <div>Map goes here</div>
+        </>
+      </PageLayout>
     </div>
   );
 }
