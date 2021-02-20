@@ -19,7 +19,7 @@ app.post("/api/upload", async (req, res, next) => {
       const parser = require("exif-parser").create(buffer);
       const result = parser.parse();
       const { GPSLatitude, GPSLongitude } = result.tags;
-      res.json([GPSLatitude, GPSLongitude]);
+      res.json([GPSLongitude, GPSLatitude]);
     });
   } catch (err) {
     throw new Error(err.message);

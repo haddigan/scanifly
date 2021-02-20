@@ -11,6 +11,8 @@ export const Map = ({ coords }) => {
   useEffect(() => {
     mapRef.current = new mapboxgl.Map({
       container: mapElement.current,
+      center: [-96.4247, 31.51073],
+      zoom: 2,
       style: "mapbox://styles/mapbox/satellite-streets-v11",
     });
   }, []);
@@ -18,11 +20,10 @@ export const Map = ({ coords }) => {
   useEffect(() => {
     if (coords) {
       const marker = new mapboxgl.Marker();
-      // todo fix coords order
-      marker.setLngLat([coords[1], coords[0]]);
+      marker.setLngLat(coords);
       marker.addTo(mapRef.current);
       mapRef.current.flyTo({
-        center: [coords[1], coords[0]],
+        center: coords,
         zoom: 18,
       });
     }
