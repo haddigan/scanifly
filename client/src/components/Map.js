@@ -1,39 +1,32 @@
-import { PureComponent } from "react";
+import { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
 import "./Map.css";
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
-export class Map extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lng: 5,
-      lat: 34,
-      zoom: 2,
-    };
-  }
-  componentDidMount() {
-    console.log(this.mapContainer);
-    const map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [this.state.lng, this.state.lat],
-      zoom: this.state.zoom,
+export const Map = ({ coords }) => {
+  const mapElement = useRef(null);
+  const mapRef = useRef(null);
+  useEffect(() => {
+    mapRef.current = new mapboxgl.Map({
+      container: mapElement.current,
+      style: "mapbox://styles/mapbox/satellite-streets-v11",
     });
+  }, []);
 
-    map.on("move", () => {
-      this.setState({
-        lng: map.getCenter().lng.toFixed(4),
-        lat: map.getCenter().lat.toFixed(4),
-        zoom: map.getZoom().toFixed(2),
+  useEffect(() => {
+    if (coords) {
+      const marker = new mapboxgl.Marker();
+      // todo fix coords order
+      marker.setLngLat([coords[1], coords[0]]);
+      marker.addTo(mapRef.current);
+      mapRef.current.flyTo({
+        center: [coords[1], coords[0]],
+        zoom: 18,
       });
-    });
-  }
-  render() {
-    return (
-      <div ref={(el) => (this.mapContainer = el)} className="map-container" />
-    );
-  }
-}
+    }
+  }, [mapRef, coords]);
+
+  return <div ref={mapElement} className="map-container" />;
+};
