@@ -2,6 +2,7 @@ import { useCoordsApi } from "./hooks/useCoordsApi";
 import { PageLayout } from "./components/PageLayout";
 import "./App.css";
 import { Header } from "./components/Header";
+import { Map } from "./components/Map";
 
 function App() {
   const [coords, requestCoords] = useCoordsApi();
@@ -34,7 +35,7 @@ function App() {
           </form>
         </>
         <>
-          <div>Map goes here</div>
+          <Map />
         </>
       </PageLayout>
     </div>

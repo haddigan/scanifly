@@ -2,5 +2,9 @@
   display: flex;
 }
 .layout-left-sidebar {
-  flex-basis: 33vw;
+  flex-basis: 25vw;
+}
+.layout-right-content {
+  flex-grow: 1;
+  height: 80vh;
 }
