@@ -1,13 +1,20 @@
+const path = require("path");
 const express = require("express");
 const formidable = require("formidable");
 const { readFile } = require("fs-extra");
 require("express-async-errors");
 
+const uploadPath = path.join(__dirname, "uploads");
 const PORT = 4001;
 const app = express();
 
+app.use("/uploads", express.static("uploads"));
+
 app.post("/api/upload", async (req, res, next) => {
-  const form = formidable();
+  const form = formidable({
+    uploadDir: uploadPath,
+    keepExtensions: true,
+  });
   try {
     form.parse(req, async (err, fields, files) => {
       if (err) {
