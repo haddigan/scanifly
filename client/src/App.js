@@ -17,8 +17,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <PageLayout>
+        <Header />
         <ImagePlotter
           onUploadImage={handleSubmit}
           coords={coordinates}

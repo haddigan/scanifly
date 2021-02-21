@@ -1,10 +1,10 @@
 .layout-container {
   display: flex;
+  flex-grow: 1;
 }
 .layout-left-sidebar {
   flex-basis: 25vw;
 }
 .layout-right-content {
   flex-grow: 1;
-  height: 80vh;
 }

@@ -1,6 +1,6 @@
 export const ImagePlotter = ({ coords, onUploadImage, file }) => {
   return (
-    <>
+    <div className="image-plotter">
       {coords && (
         <div>
           <p>
@@ -18,6 +18,6 @@ export const ImagePlotter = ({ coords, onUploadImage, file }) => {
       {file && (
         <img src={file} alt="Your upload" style={{ maxWidth: "200px" }} />
       )}
-    </>
+    </div>
   );
 };
