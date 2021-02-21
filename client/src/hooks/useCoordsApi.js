@@ -1,16 +1,19 @@
 import { useState } from "react";
 
 export const useCoordsApi = () => {
-  const [coordinates, setCoordinates] = useState(null);
+  const [response, setCoordinates] = useState({
+    coordinates: null,
+    file: null,
+  });
 
   const makeRequest = async (formData) => {
     const result = await fetch("/api/upload", {
       method: "post",
       body: formData,
     });
-    const { coordinates } = await result.json();
-    setCoordinates(coordinates);
+    const response = await result.json();
+    setCoordinates(response);
   };
 
-  return [coordinates, makeRequest];
+  return [response, makeRequest];
 };

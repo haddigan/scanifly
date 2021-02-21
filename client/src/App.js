@@ -6,7 +6,7 @@ import { ImagePlotter } from "./components/ImagePlotter";
 import "./App.css";
 
 function App() {
-  const [coords, requestCoords] = useCoordsApi();
+  const [{ coordinates, file }, requestCoords] = useCoordsApi();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,8 +19,12 @@ function App() {
     <div className="App">
       <Header />
       <PageLayout>
-        <ImagePlotter onUploadImage={handleSubmit} coords={coords} />
-        <Map coords={coords} />
+        <ImagePlotter
+          onUploadImage={handleSubmit}
+          coords={coordinates}
+          file={file}
+        />
+        <Map coords={coordinates} />
       </PageLayout>
     </div>
   );

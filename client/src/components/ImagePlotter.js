@@ -1,4 +1,4 @@
-export const ImagePlotter = ({ coords, onUploadImage }) => {
+export const ImagePlotter = ({ coords, onUploadImage, file }) => {
   return (
     <>
       {coords && (
@@ -15,6 +15,9 @@ export const ImagePlotter = ({ coords, onUploadImage }) => {
         </div>
         <input type="submit" value="Upload" />
       </form>
+      {file && (
+        <img src={file} alt="Your upload" style={{ maxWidth: "200px" }} />
+      )}
     </>
   );
 };
