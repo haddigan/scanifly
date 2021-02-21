@@ -1,0 +1,17 @@
+{
+  "name": "scanifly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:server": "cd client && npm start",
+    "start:client": "cd app && npm start",
+    "start": "npm run start:server & npm run start:client",
+    "install:server": "cd client && npm i",
+    "install:client": "cd app && npm i",
+    "install": "npm run install:server && npm run install:client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
