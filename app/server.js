@@ -21,12 +21,15 @@ app.post("/api/upload", async (req, res, next) => {
         next(err);
         return;
       }
-      const filepath = files.img_upload.path;
-      const buffer = await readFile(filepath);
+      const filePath = files.img_upload.path;
+      const fileName = filePath.replace(`${uploadPath}/`, "");
+
+      const buffer = await readFile(filePath);
       const parser = require("exif-parser").create(buffer);
       const result = parser.parse();
       const { GPSLatitude, GPSLongitude } = result.tags;
-      res.json([GPSLongitude, GPSLatitude]);
+      const coordinates = [GPSLongitude, GPSLatitude];
+      return res.json({ coordinates, file: `/uploads/${fileName}` });
     });
   } catch (err) {
     throw new Error(err.message);
