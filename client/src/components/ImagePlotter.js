@@ -8,7 +8,7 @@ export const ImagePlotter = ({ coords, onUploadImage, file }) => {
     <div className="image-plotter">
       <h1 className="image-plotter-heading">Plot a drone image on the map!</h1>
       <ImageUploader onUploadImage={onUploadImage} />
-      <PlottedImage imgSrc={file} />
+      <PlottedImage imgSrc={file} coords={coords} />
     </div>
   );
 };

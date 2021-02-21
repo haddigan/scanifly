@@ -1,0 +1,35 @@
+.image-heading {
+  text-align: left;
+  background: #e4ebee;
+  padding: 0.5em;
+  border-radius: 5px;
+  font-size: 0.7em;
+}
+
+.image-preview {
+  border-radius: 5px;
+  padding: 0 0.5em;
+}
+
+.image-preview img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.image-location {
+  text-align: left;
+}
+
+.image-location dd,
+.image-location dt {
+  font-size: 0.7em;
+  display: inline;
+}
+
+.image-location dd {
+  font-weight: 400;
+  margin: 0 1em 0 0.5em;
+}
+
+.image-location dt {
+}
